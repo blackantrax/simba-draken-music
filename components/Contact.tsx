@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 const NKUMU_URL = 'https://nkumu-music.vercel.app'
-const EMAIL = 'simbadraken51@gmail.com'
+const EMAIL = 'winconceptindustrystudios@gmail.com'
 const PHONE = '+237 656 422 854'
 const YT_CHANNEL = 'https://www.youtube.com/@SIMBADRAKEN'
 
