@@ -30,18 +30,16 @@ const ALBUMS = [
 ]
 
 const TRACKS = [
-  { id: 'moins-chere',  titre: 'Moins Chères',      feat: '(On est beau × 2)',  src: '/audio/moins-chere.mp3',  cover: '/photos/simba-front.jpg',   annee: '2024', duree: '3:13', tags: ['Pop', 'Hit'], album: 'Ōshitsu No Kaidan' },
-  { id: 'stopper',      titre: 'STOPPER',            feat: '',                   src: '/audio/stopper.mp3',      cover: '/photos/simba-image.jpg',   annee: '2025', duree: '2:32', tags: ['Rap', 'Street'], album: 'Single' },
-  { id: 'haut-parleur', titre: 'HAUT PARLEUR',       feat: '',                   src: '/audio/haut-parleur.mp3', cover: '/photos/simba-picture.jpg', annee: '2024', duree: '3:34', tags: ['Hip-Hop'], album: 'Ōshitsu No Kaidan' },
-  { id: 'smoke',        titre: 'SMOKE',              feat: '',                   src: '/audio/smoke.mp3',        cover: '/photos/simba-picture.jpg', annee: '2024', duree: '3:19', tags: ['Trap', 'Sombre'], album: 'Ōshitsu No Kaidan' },
-  { id: 'melodie',      titre: 'MÉLODIE',            feat: '',                   src: '/audio/melodie.mp3',      cover: '/photos/simba-picture.jpg', annee: '2024', duree: '3:48', tags: ['Pop Urbaine'], album: 'Ōshitsu No Kaidan' },
-  { id: 'ephemere',     titre: 'ÉPHÉMÈRE',           feat: '',                   src: '/audio/ephemere.mp3',     cover: '/photos/simba-picture.jpg', annee: '2024', duree: '—',   tags: ['Émotionnel'], album: 'Ōshitsu No Kaidan' },
-  { id: 'ok-bonus',     titre: 'OK',                 feat: '(Bonus)',            src: '/audio/ok.mp3',           cover: '/photos/simba-picture.jpg', annee: '2024', duree: '3:21', tags: ['Bonus'], album: 'Ōshitsu No Kaidan' },
-  { id: '75dans100',    titre: '75 dans 100',         feat: '(Bonus)',            src: '/audio/75dans100.mp3',    cover: '/photos/simba-picture.jpg', annee: '2024', duree: '2:50', tags: ['Bonus'], album: 'Ōshitsu No Kaidan' },
-  { id: 'rbmn-1',       titre: 'RBMN 1',             feat: '',                   src: '/audio/rbmn1.mp3',        cover: '/photos/simba-image.jpg',   annee: '2024', duree: '4:40', tags: ['Freestyle', 'Drill'], album: 'RBMN' },
-  { id: 'rbmn-2',       titre: 'RBMN 2',             feat: '',                   src: '/audio/rbmn2.mp3',        cover: '/photos/simba-image.jpg',   annee: '2024', duree: '2:56', tags: ['Freestyle', 'Drill'], album: 'RBMN' },
-  { id: 'rbmn-3',       titre: 'RBMN 3',             feat: '',                   src: '/audio/rbmn3.mp3',        cover: '/photos/simba-cover.jpg',   annee: '2025', duree: '4:35', tags: ['Clip', '4K'], album: 'RBMN' },
-  { id: 'sim1',         titre: 'SIM 1',              feat: '',                   src: '/audio/sim1.mp3',         cover: '/photos/simba-all.jpg',     annee: '2019', duree: '—',   tags: ['Debut', 'AS2PIC'], album: 'Single' },
+  { id: 'magnetic',       titre: 'Magnetic',        feat: '',               src: '/audio/magnetic.mp3',       cover: '/photos/simba-front.jpg',   annee: '2024', duree: '—', tags: ['Pop'], album: 'Ōshitsu No Kaidan' },
+  { id: 'briller',        titre: 'Briller',          feat: '',               src: '/audio/briller.mp3',        cover: '/photos/simba-front.jpg',   annee: '2024', duree: '—', tags: ['Hip-Hop'], album: 'Ōshitsu No Kaidan' },
+  { id: 'bsv',            titre: 'BSV',              feat: '',               src: '/audio/bsv.mp3',            cover: '/photos/simba-picture.jpg', annee: '2024', duree: '—', tags: ['Rap'], album: 'Ōshitsu No Kaidan' },
+  { id: 'new-day',        titre: 'New Day',          feat: '',               src: '/audio/new-day.mp3',        cover: '/photos/simba-picture.jpg', annee: '2024', duree: '—', tags: ['Pop Urbaine'], album: 'Ōshitsu No Kaidan' },
+  { id: 'fake',           titre: 'Fake',             feat: '',               src: '/audio/fake.mp3',           cover: '/photos/simba-picture.jpg', annee: '2024', duree: '—', tags: ['Trap'], album: 'Ōshitsu No Kaidan' },
+  { id: 'karisme',        titre: 'Karisme',          feat: '',               src: '/audio/karisme.mp3',        cover: '/photos/simba-picture.jpg', annee: '2024', duree: '—', tags: ['Hip-Hop'], album: 'Ōshitsu No Kaidan' },
+  { id: 'la-cale',        titre: 'La Cale',          feat: '',               src: '/audio/la-cale.mp3',        cover: '/photos/simba-picture.jpg', annee: '2024', duree: '—', tags: ['Sombre'], album: 'Ōshitsu No Kaidan' },
+  { id: 'on-ne-rit-pas',  titre: 'On Ne Rit Pas',   feat: '',               src: '/audio/on-ne-rit-pas.mp3',  cover: '/photos/simba-picture.jpg', annee: '2024', duree: '—', tags: ['Émotionnel'], album: 'Ōshitsu No Kaidan' },
+  { id: 'pigeon',         titre: 'Pigeon',           feat: '',               src: '/audio/pigeon.mp3',         cover: '/photos/simba-picture.jpg', annee: '2024', duree: '—', tags: ['Street'], album: 'Ōshitsu No Kaidan' },
+  { id: 'stopper',        titre: 'STOPPER',          feat: '',               src: '/audio/stopper.mp3',        cover: '/photos/simba-image.jpg',   annee: '2025', duree: '—', tags: ['Rap', 'Street'], album: 'Single' },
 ]
 
 function fmtTime(s: number) {
@@ -53,7 +51,6 @@ function fmtTime(s: number) {
 
 const ALBUM_COLORS: Record<string, string> = {
   'Ōshitsu No Kaidan': 'rgba(200,0,0,0.15)',
-  'RBMN':              'rgba(212,160,23,0.12)',
   'Single':            'rgba(255,255,255,0.05)',
 }
 
@@ -64,7 +61,7 @@ export default function Musique() {
   const [filter, setFilter] = useState<string>('Tout')
   const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({})
 
-  const FILTERS = ['Tout', 'Ōshitsu No Kaidan', 'RBMN', 'Single']
+  const FILTERS = ['Tout', 'Ōshitsu No Kaidan', 'Single']
   const filtered = filter === 'Tout' ? TRACKS : TRACKS.filter(t => t.album === filter)
 
   function handlePlay(id: string) {
@@ -97,7 +94,7 @@ export default function Musique() {
             La musique de <span style={{ color: 'var(--blue)' }}>Simba Draken</span>
           </h2>
           <p style={{ maxWidth: 560, fontSize: 'clamp(.92rem, 1.7vw, 1.05rem)' }}>
-            {TRACKS.length} titres — EP, singles, série RBMN. Écoute les extraits ici et stream intégralement sur NKUMU.
+            {TRACKS.length} titres disponibles en écoute. Écoute les extraits ici et stream intégralement sur NKUMU.
           </p>
         </div>
 
