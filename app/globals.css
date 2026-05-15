@@ -6,22 +6,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
 
 :root {
-  --bg:         #060608;
-  --surface:    #0C0C12;
-  --card:       #12121A;
-  --card-hover: #1A1A24;
-  --blue:       #1A6FFF;
-  --blue-bright: #4D8FFF;
-  --blue-dim:   rgba(26,111,255,0.15);
-  --blue-glow:  rgba(26,111,255,0.3);
+  --bg:         #070709;
+  --surface:    #0E0E12;
+  --card:       #141418;
+  --card-hover: #1C1C22;
+  --blue:       #C80000;
+  --blue-bright: #E81010;
+  --blue-dim:   rgba(200,0,0,0.15);
+  --blue-glow:  rgba(200,0,0,0.35);
   --gold:       #D4A017;
   --gold-dim:   rgba(212,160,23,0.15);
   --white:      #FFFFFF;
-  --text-1:     #F0EEF8;
+  --text-1:     #F2F0FA;
   --text-2:     #8A88A0;
   --text-3:     #4A485A;
   --border:     rgba(255,255,255,0.07);
-  --border-blue: rgba(26,111,255,0.3);
+  --border-blue: rgba(200,0,0,0.3);
 
   --r-sm:  8px;
   --r-md:  14px;
@@ -146,8 +146,8 @@ p  { color: var(--text-2); line-height: 1.75; }
 /* ── Ticker ── */
 .ticker-wrap {
   overflow: hidden;
-  border-block: 1px solid rgba(26,111,255,0.25);
-  background: rgba(26,111,255,0.04);
+  border-block: 1px solid rgba(200,0,0,0.25);
+  background: rgba(200,0,0,0.04);
   padding-block: .5rem;
 }
 .ticker-inner {
@@ -164,6 +164,13 @@ p  { color: var(--text-2); line-height: 1.75; }
 .ticker-dot {
   width: 4px; height: 4px; border-radius: 50%;
   background: var(--blue); flex-shrink: 0;
+}
+
+/* ── Séparateur fumo rosso ── */
+.red-line {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(to bottom, transparent, var(--blue) 20%, var(--blue) 80%, transparent);
+  opacity: .45;
 }
 
 /* ── Audio Player ── */

@@ -6,6 +6,7 @@ import Ticker from '@/components/Ticker'
 import About from '@/components/About'
 import Musique from '@/components/Musique'
 import Videos from '@/components/Videos'
+import Concerts from '@/components/Concerts'
 import Galerie from '@/components/Galerie'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
@@ -20,6 +21,7 @@ export default function HomePage() {
         <About />
         <Musique />
         <Videos />
+        <Concerts />
         <Galerie />
         <Contact />
       </main>

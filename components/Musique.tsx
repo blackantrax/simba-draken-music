@@ -4,58 +4,75 @@ import { useState, useRef, useEffect } from 'react'
 
 const NKUMU_URL = 'https://nkumu-music.vercel.app'
 
+const ALBUMS = [
+  {
+    id: 'oshitsu',
+    titre: 'Ōshitsu No Kaidan',
+    sousTitre: '王室の階段 — Les Escaliers du Palais Royal',
+    annee: '2024',
+    label: 'Win Concept Industry',
+    nbTitres: 10,
+    cover: '/photos/simba-picture.jpg',
+    type: 'EP',
+    youtubePlaylist: 'https://www.youtube.com/@SIMBADRAKEN',
+  },
+  {
+    id: 'rbmn1',
+    titre: 'RBMN 1',
+    sousTitre: 'Retenez Bien Mon Nom — Première Époque',
+    annee: '2024',
+    label: 'Indépendant',
+    nbTitres: 1,
+    cover: '/photos/simba-image.jpg',
+    type: 'Single',
+    youtubePlaylist: 'https://www.youtube.com/watch?v=IL-pqZrMZds',
+  },
+]
+
 const TRACKS = [
-  { id: 'magnetic',      titre: 'Magnetic',          feat: 'ft. JKS',       src: '/audio/magnetic.mp3',     cover: '/photos/simba-cover.jpg',   annee: '2025', duree: '3:45', tags: ['Trap', 'Collab'] },
-  { id: 'briller',       titre: 'Briller',            feat: '',              src: '/audio/briller.mp3',      cover: '/photos/simba-front.jpg',   annee: '2024', duree: '3:40', tags: ['Afrorap', 'Motivation'] },
-  { id: 'bsv',           titre: 'B.S.V',              feat: 'Winconcept × Mezik Record', src: '/audio/bsv.mp3', cover: '/photos/simba-picture.jpg', annee: '2024', duree: '4:20', tags: ['Trap', 'Collab'] },
-  { id: 'new-day',       titre: 'New Day',            feat: '',              src: '/audio/new-day.mp3',      cover: '/photos/simba-image.jpg',   annee: '2024', duree: '3:30', tags: ['Pop', 'Motivation'] },
-  { id: 'karisme',       titre: 'Karisme',            feat: '',              src: '/audio/karisme.mp3',      cover: '/photos/simba-all.jpg',     annee: '2024', duree: '3:15', tags: ['Trap'] },
-  { id: 'fake',          titre: 'Fake',               feat: '',              src: '/audio/fake.mp3',         cover: '/photos/simba-cover.jpg',   annee: '2024', duree: '3:10', tags: ['Trap', 'Street'] },
-  { id: 'la-cale',       titre: 'La Cale',            feat: '',              src: '/audio/la-cale.mp3',      cover: '/photos/simba-fan.jpg',     annee: '2024', duree: '3:20', tags: ['Street'] },
-  { id: 'pigeon',        titre: 'Pigeon',             feat: '',              src: '/audio/pigeon.mp3',       cover: '/photos/simba-front.jpg',   annee: '2024', duree: '3:05', tags: ['Trap'] },
-  { id: 'stopper',       titre: 'Stopper',            feat: '',              src: '/audio/stopper.mp3',      cover: '/photos/simba-image.jpg',   annee: '2024', duree: '2:55', tags: ['Afrorap'] },
-  { id: 'on-ne-rit-pas', titre: "On Ne Rit Pas",     feat: '',              src: '/audio/on-ne-rit-pas.mp3',cover: '/photos/simba-picture.jpg', annee: '2024', duree: '3:00', tags: ['Trap', 'Street'] },
+  { id: 'moins-chere',  titre: 'Moins Chères',      feat: '(On est beau × 2)',  src: '/audio/moins-chere.mp3',  cover: '/photos/simba-front.jpg',   annee: '2024', duree: '3:13', tags: ['Pop', 'Hit'], album: 'Ōshitsu No Kaidan' },
+  { id: 'stopper',      titre: 'STOPPER',            feat: '',                   src: '/audio/stopper.mp3',      cover: '/photos/simba-image.jpg',   annee: '2025', duree: '2:32', tags: ['Rap', 'Street'], album: 'Single' },
+  { id: 'haut-parleur', titre: 'HAUT PARLEUR',       feat: '',                   src: '/audio/haut-parleur.mp3', cover: '/photos/simba-picture.jpg', annee: '2024', duree: '3:34', tags: ['Hip-Hop'], album: 'Ōshitsu No Kaidan' },
+  { id: 'smoke',        titre: 'SMOKE',              feat: '',                   src: '/audio/smoke.mp3',        cover: '/photos/simba-picture.jpg', annee: '2024', duree: '3:19', tags: ['Trap', 'Sombre'], album: 'Ōshitsu No Kaidan' },
+  { id: 'melodie',      titre: 'MÉLODIE',            feat: '',                   src: '/audio/melodie.mp3',      cover: '/photos/simba-picture.jpg', annee: '2024', duree: '3:48', tags: ['Pop Urbaine'], album: 'Ōshitsu No Kaidan' },
+  { id: 'ephemere',     titre: 'ÉPHÉMÈRE',           feat: '',                   src: '/audio/ephemere.mp3',     cover: '/photos/simba-picture.jpg', annee: '2024', duree: '—',   tags: ['Émotionnel'], album: 'Ōshitsu No Kaidan' },
+  { id: 'ok-bonus',     titre: 'OK',                 feat: '(Bonus)',            src: '/audio/ok.mp3',           cover: '/photos/simba-picture.jpg', annee: '2024', duree: '3:21', tags: ['Bonus'], album: 'Ōshitsu No Kaidan' },
+  { id: '75dans100',    titre: '75 dans 100',         feat: '(Bonus)',            src: '/audio/75dans100.mp3',    cover: '/photos/simba-picture.jpg', annee: '2024', duree: '2:50', tags: ['Bonus'], album: 'Ōshitsu No Kaidan' },
+  { id: 'rbmn-1',       titre: 'RBMN 1',             feat: '',                   src: '/audio/rbmn1.mp3',        cover: '/photos/simba-image.jpg',   annee: '2024', duree: '4:40', tags: ['Freestyle', 'Drill'], album: 'RBMN' },
+  { id: 'rbmn-2',       titre: 'RBMN 2',             feat: '',                   src: '/audio/rbmn2.mp3',        cover: '/photos/simba-image.jpg',   annee: '2024', duree: '2:56', tags: ['Freestyle', 'Drill'], album: 'RBMN' },
+  { id: 'rbmn-3',       titre: 'RBMN 3',             feat: '',                   src: '/audio/rbmn3.mp3',        cover: '/photos/simba-cover.jpg',   annee: '2025', duree: '4:35', tags: ['Clip', '4K'], album: 'RBMN' },
+  { id: 'sim1',         titre: 'SIM 1',              feat: '',                   src: '/audio/sim1.mp3',         cover: '/photos/simba-all.jpg',     annee: '2019', duree: '—',   tags: ['Debut', 'AS2PIC'], album: 'Single' },
 ]
 
 function fmtTime(s: number) {
-  if (!isFinite(s)) return '0:00'
+  if (!isFinite(s) || s < 0) return '0:00'
   const m = Math.floor(s / 60)
   const ss = Math.floor(s % 60)
   return `${m}:${ss.toString().padStart(2, '0')}`
+}
+
+const ALBUM_COLORS: Record<string, string> = {
+  'Ōshitsu No Kaidan': 'rgba(200,0,0,0.15)',
+  'RBMN':              'rgba(212,160,23,0.12)',
+  'Single':            'rgba(255,255,255,0.05)',
 }
 
 export default function Musique() {
   const [playing, setPlaying] = useState<string | null>(null)
   const [progress, setProgress] = useState<Record<string, number>>({})
   const [duration, setDuration] = useState<Record<string, number>>({})
+  const [filter, setFilter] = useState<string>('Tout')
   const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({})
 
+  const FILTERS = ['Tout', 'Ōshitsu No Kaidan', 'RBMN', 'Single']
+  const filtered = filter === 'Tout' ? TRACKS : TRACKS.filter(t => t.album === filter)
+
   function handlePlay(id: string) {
-    // Pause tout autre
-    if (playing && playing !== id) {
-      audioRefs.current[playing]?.pause()
-    }
+    if (playing && playing !== id) audioRefs.current[playing]?.pause()
     const audio = audioRefs.current[id]
     if (!audio) return
-    if (playing === id) {
-      audio.pause()
-      setPlaying(null)
-    } else {
-      audio.play()
-      setPlaying(id)
-    }
-  }
-
-  function handleTimeUpdate(id: string) {
-    const audio = audioRefs.current[id]
-    if (!audio) return
-    setProgress(p => ({ ...p, [id]: audio.currentTime }))
-  }
-
-  function handleLoadedMetadata(id: string) {
-    const audio = audioRefs.current[id]
-    if (!audio) return
-    setDuration(d => ({ ...d, [id]: audio.duration }))
+    if (playing === id) { audio.pause(); setPlaying(null) }
+    else { audio.play(); setPlaying(id) }
   }
 
   function handleSeek(id: string, e: React.ChangeEvent<HTMLInputElement>) {
@@ -64,125 +81,188 @@ export default function Musique() {
     audio.currentTime = Number(e.target.value)
   }
 
+  useEffect(() => {
+    return () => { Object.values(audioRefs.current).forEach(a => a?.pause()) }
+  }, [])
+
+  const activeTrack = TRACKS.find(x => x.id === playing)
+
   return (
     <section id="musique" className="section section-alt">
       <div className="container">
+
         <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)' }}>
           <div className="eyebrow">Discographie</div>
           <h2 style={{ marginBottom: '1rem' }}>
             La musique de <span style={{ color: 'var(--blue)' }}>Simba Draken</span>
           </h2>
-          <p style={{ maxWidth: 520, fontSize: 'clamp(.92rem, 1.7vw, 1.05rem)' }}>
-            10 singles disponibles. Écoute les extraits ici — stream et achète en intégralité sur NKUMU.
+          <p style={{ maxWidth: 560, fontSize: 'clamp(.92rem, 1.7vw, 1.05rem)' }}>
+            {TRACKS.length} titres — EP, singles, série RBMN. Écoute les extraits ici et stream intégralement sur NKUMU.
           </p>
         </div>
 
-        {/* Lecteur principal — track active */}
-        {playing && (() => {
-          const t = TRACKS.find(x => x.id === playing)!
-          return (
-            <div style={{
-              background: 'linear-gradient(135deg, rgba(26,111,255,0.12), rgba(212,160,23,0.06))',
-              border: '1px solid rgba(26,111,255,0.35)',
-              borderRadius: 'var(--r-lg)', padding: '1.5rem',
-              marginBottom: '2rem',
-              display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap',
-            }}>
-              <img src={t.cover} alt={t.titre}
-                style={{ width: 72, height: 72, borderRadius: 10, objectFit: 'cover', flexShrink: 0 }} />
-              <div style={{ flex: 1, minWidth: 220 }}>
-                <div style={{ fontWeight: 800, fontSize: '1.1rem', color: '#fff', marginBottom: '.2rem' }}>
-                  {t.titre} {t.feat && <span style={{ color: 'var(--blue)', fontSize: '.85rem' }}>{t.feat}</span>}
-                </div>
-                <div style={{ fontSize: '.78rem', color: 'var(--text-2)', marginBottom: '.75rem' }}>Simba Draken · {t.annee}</div>
-                {/* Barre de progression */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '.75rem' }}>
-                  <span style={{ fontSize: '.7rem', color: 'var(--text-3)', minWidth: 36 }}>{fmtTime(progress[t.id] || 0)}</span>
-                  <input type="range" min="0" max={duration[t.id] || 100} value={progress[t.id] || 0}
-                    onChange={e => handleSeek(t.id, e)}
-                    style={{ flex: 1, accentColor: 'var(--blue)', height: 4, cursor: 'pointer' }} />
-                  <span style={{ fontSize: '.7rem', color: 'var(--text-3)', minWidth: 36, textAlign: 'right' }}>{fmtTime(duration[t.id] || 0)}</span>
-                </div>
+        {/* Albums cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
+          {ALBUMS.map(a => (
+            <a key={a.id} href={a.youtubePlaylist} target="_blank" rel="noopener noreferrer"
+              style={{
+                display: 'flex', gap: '1rem', alignItems: 'center',
+                background: 'var(--card)', border: '1px solid var(--border)',
+                borderRadius: 'var(--r-md)', padding: '1rem',
+                textDecoration: 'none', transition: 'all .2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(200,0,0,0.4)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.transform = 'translateY(0)' }}
+            >
+              <div style={{ width: 72, height: 72, borderRadius: 10, overflow: 'hidden', flexShrink: 0 }}>
+                <img src={a.cover} alt={a.titre} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
-              <button onClick={() => handlePlay(t.id)} style={{
-                width: 52, height: 52, borderRadius: '50%', background: 'var(--blue)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-                border: 'none', color: '#fff', flexShrink: 0,
-              }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  {playing === t.id
-                    ? <><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></>
-                    : <path d="M5 3l14 9-14 9V3z"/>}
-                </svg>
-              </button>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{
+                  fontSize: '.6rem', fontWeight: 700, letterSpacing: '.12em',
+                  color: 'var(--blue)', textTransform: 'uppercase', marginBottom: '.3rem',
+                }}>{a.type} · {a.annee}</div>
+                <div style={{ fontWeight: 800, fontSize: '.95rem', color: 'var(--text-1)', lineHeight: 1.2, marginBottom: '.2rem' }}>{a.titre}</div>
+                <div style={{ fontSize: '.72rem', color: 'var(--text-3)' }}>{a.nbTitres} titre{a.nbTitres > 1 ? 's' : ''} · {a.label}</div>
+              </div>
+              <span style={{ color: 'var(--text-3)', flexShrink: 0 }}>→</span>
+            </a>
+          ))}
+        </div>
+
+        {/* Lecteur actif */}
+        {activeTrack && (
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(200,0,0,0.12), rgba(200,0,0,0.04))',
+            border: '1px solid rgba(200,0,0,0.35)',
+            borderRadius: 'var(--r-lg)', padding: '1.5rem',
+            marginBottom: '2rem',
+            display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap',
+          }}>
+            <img src={activeTrack.cover} alt={activeTrack.titre}
+              style={{ width: 72, height: 72, borderRadius: 10, objectFit: 'cover', flexShrink: 0 }} />
+            <div style={{ flex: 1, minWidth: 220 }}>
+              <div style={{ fontWeight: 800, fontSize: '1.1rem', color: '#fff', marginBottom: '.2rem' }}>
+                {activeTrack.titre}
+                {activeTrack.feat && <span style={{ color: 'var(--blue)', fontSize: '.82rem', marginLeft: '.5rem', fontWeight: 400 }}>{activeTrack.feat}</span>}
+              </div>
+              <div style={{ fontSize: '.75rem', color: 'var(--text-2)', marginBottom: '.75rem' }}>
+                Simba Draken · {activeTrack.annee} · {activeTrack.album}
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '.75rem' }}>
+                <span style={{ fontSize: '.7rem', color: 'var(--text-3)', minWidth: 36 }}>{fmtTime(progress[activeTrack.id] || 0)}</span>
+                <input type="range" min="0" max={duration[activeTrack.id] || 100} value={progress[activeTrack.id] || 0}
+                  onChange={e => handleSeek(activeTrack.id, e)}
+                  style={{ flex: 1, accentColor: 'var(--blue)', height: 4, cursor: 'pointer' }} />
+                <span style={{ fontSize: '.7rem', color: 'var(--text-3)', minWidth: 36, textAlign: 'right' }}>{fmtTime(duration[activeTrack.id] || 0)}</span>
+              </div>
             </div>
-          )
-        })()}
+            <button onClick={() => handlePlay(activeTrack.id)} style={{
+              width: 52, height: 52, borderRadius: '50%', background: 'var(--blue)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', border: 'none', color: '#fff', flexShrink: 0,
+            }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                {playing === activeTrack.id
+                  ? <><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></>
+                  : <path d="M5 3l14 9-14 9V3z"/>}
+              </svg>
+            </button>
+          </div>
+        )}
+
+        {/* Filtres */}
+        <div style={{ display: 'flex', gap: '.5rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
+          {FILTERS.map(f => (
+            <button key={f} onClick={() => setFilter(f)} style={{
+              padding: '.4rem 1rem', borderRadius: 100, fontSize: '.78rem', fontWeight: 600,
+              background: filter === f ? 'var(--blue)' : 'var(--card)',
+              color: filter === f ? '#fff' : 'var(--text-2)',
+              border: `1px solid ${filter === f ? 'var(--blue)' : 'var(--border)'}`,
+              cursor: 'pointer', transition: 'all .2s',
+            }}>{f}</button>
+          ))}
+        </div>
 
         {/* Liste des titres */}
         <div style={{ background: 'var(--card)', borderRadius: 'var(--r-lg)', overflow: 'hidden', border: '1px solid var(--border)' }}>
-          {TRACKS.map((t, i) => (
+          {filtered.map((t, i) => (
             <div key={t.id}>
-              {/* Audio element caché */}
               <audio
                 ref={el => { audioRefs.current[t.id] = el }}
                 src={t.src}
-                onTimeUpdate={() => handleTimeUpdate(t.id)}
-                onLoadedMetadata={() => handleLoadedMetadata(t.id)}
+                onTimeUpdate={() => {
+                  const a = audioRefs.current[t.id]
+                  if (a) setProgress(p => ({ ...p, [t.id]: a.currentTime }))
+                }}
+                onLoadedMetadata={() => {
+                  const a = audioRefs.current[t.id]
+                  if (a) setDuration(d => ({ ...d, [t.id]: a.duration }))
+                }}
                 onEnded={() => setPlaying(null)}
               />
-
               <div
                 className={`track-row ${playing === t.id ? 'playing' : ''}`}
                 style={{
                   gridTemplateColumns: '44px 1fr auto auto',
-                  borderBottom: i < TRACKS.length - 1 ? '1px solid var(--border)' : 'none',
+                  borderBottom: i < filtered.length - 1 ? '1px solid var(--border)' : 'none',
+                  cursor: 'pointer',
+                  background: playing === t.id ? ALBUM_COLORS[t.album] : undefined,
                 }}
                 onClick={() => handlePlay(t.id)}
               >
-                {/* Play / Numéro */}
-                <div style={{
-                  width: 36, height: 36, borderRadius: '50%',
-                  background: playing === t.id ? 'var(--blue)' : 'rgba(255,255,255,0.06)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  transition: 'background .2s', flexShrink: 0,
-                }}>
-                  {playing === t.id ? (
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                      <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
-                    </svg>
-                  ) : (
-                    <span style={{ fontSize: '.75rem', fontWeight: 700, color: 'var(--text-3)' }}>{String(i + 1).padStart(2, '0')}</span>
-                  )}
+                <div style={{ position: 'relative', width: 36, height: 36, flexShrink: 0 }}>
+                  <img src={t.cover} alt={t.titre}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 6 }} />
+                  <div style={{
+                    position: 'absolute', inset: 0, borderRadius: 6,
+                    background: playing === t.id ? 'rgba(200,0,0,0.7)' : 'rgba(0,0,0,0.3)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    transition: 'background .2s',
+                  }}>
+                    {playing === t.id ? (
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
+                        <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
+                      </svg>
+                    ) : (
+                      <span style={{ fontSize: '.62rem', fontWeight: 700, color: 'rgba(255,255,255,0.7)' }}>
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
-                {/* Info titre */}
                 <div style={{ overflow: 'hidden' }}>
                   <div style={{ fontWeight: 700, fontSize: '.95rem', color: playing === t.id ? 'var(--blue)' : 'var(--text-1)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    {t.titre} {t.feat && <span style={{ color: 'var(--blue)', fontWeight: 400, fontSize: '.82rem' }}>{t.feat}</span>}
+                    {t.titre}
+                    {t.feat && <span style={{ color: 'var(--text-3)', fontWeight: 400, fontSize: '.82rem', marginLeft: '.4rem' }}>{t.feat}</span>}
                   </div>
-                  <div style={{ fontSize: '.72rem', color: 'var(--text-3)', marginTop: '.15rem' }}>
-                    Simba Draken · {t.annee} · {t.tags.join(', ')}
+                  <div style={{ fontSize: '.7rem', color: 'var(--text-3)', marginTop: '.15rem', display: 'flex', gap: '.5rem', alignItems: 'center' }}>
+                    <span>{t.annee}</span>
+                    <span>·</span>
+                    <span style={{
+                      fontSize: '.6rem', padding: '.1rem .4rem', borderRadius: 3,
+                      background: 'rgba(200,0,0,0.1)', color: 'rgba(200,0,0,0.7)',
+                      border: '1px solid rgba(200,0,0,0.15)',
+                    }}>{t.album}</span>
                   </div>
                 </div>
 
-                {/* Durée */}
-                <div style={{ fontSize: '.78rem', color: 'var(--text-3)', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                <div style={{ fontSize: '.78rem', color: 'var(--text-3)', whiteSpace: 'nowrap', textAlign: 'right' }}>
                   {playing === t.id && progress[t.id] ? fmtTime(progress[t.id]) : t.duree}
                 </div>
 
-                {/* Bouton NKUMU */}
                 <a
                   href={NKUMU_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={e => e.stopPropagation()}
                   style={{
-                    fontSize: '.65rem', fontWeight: 700, letterSpacing: '.08em',
-                    padding: '.3rem .7rem', borderRadius: 4,
-                    background: 'rgba(26,111,255,0.12)', border: '1px solid rgba(26,111,255,0.3)',
+                    fontSize: '.62rem', fontWeight: 700, letterSpacing: '.08em',
+                    padding: '.3rem .6rem', borderRadius: 4,
+                    background: 'rgba(200,0,0,0.1)', border: '1px solid rgba(200,0,0,0.25)',
                     color: 'var(--blue)', textTransform: 'uppercase', whiteSpace: 'nowrap',
-                    transition: 'all .2s',
+                    textDecoration: 'none', transition: 'all .2s',
                   }}>
                   NKUMU
                 </a>

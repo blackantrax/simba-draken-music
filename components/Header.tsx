@@ -3,11 +3,12 @@
 import { useState, useEffect } from 'react'
 
 const NAV = [
-  { href: '#about',   label: 'À Propos' },
-  { href: '#musique', label: 'Musique' },
-  { href: '#videos',  label: 'Vidéos' },
-  { href: '#galerie', label: 'Galerie' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#about',    label: 'À Propos' },
+  { href: '#musique',  label: 'Musique' },
+  { href: '#videos',   label: 'Vidéos' },
+  { href: '#concerts', label: 'Concerts' },
+  { href: '#galerie',  label: 'Galerie' },
+  { href: '#contact',  label: 'Contact' },
 ]
 
 const NKUMU_URL = 'https://nkumu-music.vercel.app'
@@ -30,7 +31,7 @@ export default function Header() {
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       background: scrolled ? 'rgba(6,6,8,0.96)' : 'transparent',
       backdropFilter: scrolled ? 'blur(20px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(26,111,255,0.15)' : '1px solid transparent',
+      borderBottom: scrolled ? '1px solid rgba(200,0,0,0.2)' : '1px solid transparent',
       transition: 'all .3s ease',
     }}>
       {/* Logo */}
@@ -82,7 +83,7 @@ export default function Header() {
         <div style={{
           position: 'absolute', top: 68, left: 0, right: 0,
           background: 'rgba(6,6,8,0.98)', backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(26,111,255,0.2)',
+          borderBottom: '1px solid rgba(200,0,0,0.2)',
           padding: '1.5rem clamp(1.25rem, 5vw, 3.5rem) 2rem',
           display: 'flex', flexDirection: 'column', gap: '.25rem',
         }}>
