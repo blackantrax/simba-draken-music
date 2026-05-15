@@ -1,0 +1,217 @@
+/* ═══════════════════════════════════════════════
+   SIMBA DRAKEN — Site Officiel
+   Rise & Shine · Winconcept · Douala
+═══════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+
+:root {
+  --bg:         #060608;
+  --surface:    #0C0C12;
+  --card:       #12121A;
+  --card-hover: #1A1A24;
+  --blue:       #1A6FFF;
+  --blue-bright: #4D8FFF;
+  --blue-dim:   rgba(26,111,255,0.15);
+  --blue-glow:  rgba(26,111,255,0.3);
+  --gold:       #D4A017;
+  --gold-dim:   rgba(212,160,23,0.15);
+  --white:      #FFFFFF;
+  --text-1:     #F0EEF8;
+  --text-2:     #8A88A0;
+  --text-3:     #4A485A;
+  --border:     rgba(255,255,255,0.07);
+  --border-blue: rgba(26,111,255,0.3);
+
+  --r-sm:  8px;
+  --r-md:  14px;
+  --r-lg:  24px;
+  --max-w: 1360px;
+  --t:     0.22s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text-1);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img, video { display: block; max-width: 100%; }
+
+h1, h2, h3, h4 {
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--text-1);
+}
+
+h1 { font-size: clamp(3.5rem, 9vw, 7rem); }
+h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); }
+h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
+p  { color: var(--text-2); line-height: 1.75; }
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3.5rem);
+}
+
+.section {
+  padding-block: clamp(5rem, 10vw, 9rem);
+  position: relative;
+  z-index: 1;
+}
+
+.section-alt { background: var(--surface); }
+
+/* ── Boutons ── */
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .875rem 2rem; border-radius: 100px;
+  font-weight: 700; font-size: .92rem;
+  letter-spacing: .02em; white-space: nowrap;
+  transition: all var(--t); min-height: 48px;
+  cursor: pointer; border: none;
+}
+
+.btn-blue {
+  background: var(--blue); color: #fff;
+  box-shadow: 0 4px 28px var(--blue-glow);
+}
+.btn-blue:hover {
+  background: var(--blue-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(26,111,255,0.5);
+}
+
+.btn-gold {
+  background: var(--gold); color: #000;
+  box-shadow: 0 4px 24px rgba(212,160,23,0.3);
+  font-weight: 800;
+}
+.btn-gold:hover {
+  background: #E8B420;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent; color: var(--text-1);
+  border: 1.5px solid rgba(255,255,255,0.15);
+}
+.btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+/* ── Eyebrow ── */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .68rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 1rem;
+}
+.eyebrow::before {
+  content: '';
+  display: block; width: 24px; height: 2px;
+  background: var(--blue); border-radius: 1px;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: border-color var(--t), transform var(--t);
+}
+.card:hover {
+  border-color: var(--border-blue);
+  transform: translateY(-3px);
+}
+
+/* ── Ticker ── */
+.ticker-wrap {
+  overflow: hidden;
+  border-block: 1px solid rgba(26,111,255,0.25);
+  background: rgba(26,111,255,0.04);
+  padding-block: .5rem;
+}
+.ticker-inner {
+  display: flex; gap: 3rem;
+  white-space: nowrap; width: max-content;
+  animation: ticker 45s linear infinite;
+}
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-item {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .72rem; font-weight: 600; letter-spacing: .08em;
+  color: var(--text-2); text-transform: uppercase;
+}
+.ticker-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--blue); flex-shrink: 0;
+}
+
+/* ── Audio Player ── */
+.track-row {
+  display: grid; align-items: center;
+  padding: .875rem 1.125rem;
+  border-radius: var(--r-sm);
+  transition: background var(--t), border-color var(--t);
+  cursor: pointer;
+  border: 1px solid transparent;
+  gap: 1rem;
+  grid-template-columns: 32px 1fr auto auto;
+}
+.track-row:hover { background: rgba(26,111,255,0.06); border-color: var(--border-blue); }
+.track-row.playing { background: rgba(26,111,255,0.1); border-color: rgba(26,111,255,0.4); }
+
+/* ── NKUMU Banner ── */
+.nkumu-banner {
+  background: linear-gradient(135deg, rgba(26,111,255,0.08), rgba(212,160,23,0.06));
+  border: 1px solid rgba(26,111,255,0.2);
+  border-radius: var(--r-md);
+  padding: 1.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap;
+}
+
+/* ── Photo grid ── */
+.photo-item {
+  overflow: hidden; border-radius: var(--r-md);
+  position: relative;
+}
+.photo-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.photo-item:hover img { transform: scale(1.05); }
+.photo-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+  opacity: 0; transition: opacity var(--t);
+  display: flex; align-items: flex-end; padding: 1rem;
+}
+.photo-item:hover .photo-overlay { opacity: 1; }
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  h1 { font-size: clamp(2.8rem, 10vw, 4rem); }
+  h2 { font-size: clamp(1.8rem, 7vw, 2.5rem); }
+  .btn { min-height: 52px; font-size: 1rem; }
+}
