@@ -47,7 +47,7 @@ const VIDEOS = [
   },
   {
     id: 'kadji',
-    youtubeId: 'HMhgodPyPsI',
+    youtubeId: 'RvPglHksDvs',
     titre: 'Kadji Champagne du Pays',
     feat: 'NLS 237 ft. Simba',
     vues: '30K',
