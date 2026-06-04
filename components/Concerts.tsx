@@ -238,13 +238,13 @@ export default function Concerts() {
         }}>
           <div>
             <div style={{ fontSize: '.68rem', fontWeight: 800, letterSpacing: '.2em', textTransform: 'uppercase', color: 'var(--blue)', marginBottom: '.5rem' }}>
-              Programmer Simba Draken
+              Programmer nos artistes
             </div>
             <div style={{ fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)', fontWeight: 900, color: 'var(--text-1)', marginBottom: '.4rem' }}>
-              Disponible pour concerts & événements
+              Simba Draken &amp; Diablit — Disponibles pour concerts
             </div>
             <p style={{ fontSize: '.9rem', color: 'var(--text-2)' }}>
-              Bookings via Win Concept Industry · Yaoundé, Cameroun
+              Bookings via Win Concept Industry · Yaoundé 🇨🇲 · Canada 🇨🇦 · WhatsApp +1 438 492-7278
             </p>
           </div>
           <a href="#contact" className="btn btn-blue">

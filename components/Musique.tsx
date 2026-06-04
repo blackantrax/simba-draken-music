@@ -89,13 +89,29 @@ export default function Musique() {
       <div className="container">
 
         <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)' }}>
-          <div className="eyebrow">Discographie</div>
+          <div className="eyebrow">Discographie · Win Concept Industry</div>
           <h2 style={{ marginBottom: '1rem' }}>
             La musique de <span style={{ color: 'var(--blue)' }}>Simba Draken</span>
           </h2>
-          <p style={{ maxWidth: 560, fontSize: 'clamp(.92rem, 1.7vw, 1.05rem)' }}>
-            {TRACKS.length} titres disponibles en écoute. Écoute les extraits ici et stream intégralement sur NKUMU.
+          <p style={{ maxWidth: 600, fontSize: 'clamp(.92rem, 1.7vw, 1.05rem)' }}>
+            {TRACKS.length} titres disponibles en écoute directe. Dans ces sons, Simba Draken cite et met en valeur{' '}
+            <strong style={{ color: 'var(--blue)' }}>Win Concept Industry</strong> — chaque écoute est une exposition pour la marque.
+            Stream intégral sur NKUMU.
           </p>
+          {/* WCI music banner */}
+          <div style={{
+            marginTop: '1.5rem',
+            background: 'linear-gradient(135deg, rgba(200,0,0,0.08), rgba(212,160,23,0.05))',
+            border: '1px solid rgba(200,0,0,0.18)',
+            borderRadius: 'var(--r-sm)', padding: '1rem 1.5rem',
+            display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap',
+          }}>
+            <div style={{ width: 32, height: 32, borderRadius: 7, background: 'var(--blue)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', fontWeight: 900, color: '#fff', flexShrink: 0 }}>WCI</div>
+            <div style={{ flex: 1 }}>
+              <span style={{ fontSize: '.82rem', fontWeight: 700, color: 'var(--text-1)' }}>Produit par Win Concept Industry</span>
+              <span style={{ fontSize: '.78rem', color: 'var(--text-3)', marginLeft: '.75rem' }}>Yaoundé, Cameroun 🇨🇲 · Chaque son, une publicité pour le label</span>
+            </div>
+          </div>
         </div>
 
         {/* Albums cards */}

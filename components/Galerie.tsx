@@ -18,12 +18,12 @@ export default function Galerie() {
     <section id="galerie" className="section section-alt">
       <div className="container">
         <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)' }}>
-          <div className="eyebrow">Galerie</div>
+          <div className="eyebrow">Win Concept Industry · Galerie</div>
           <h2 style={{ marginBottom: '1rem' }}>
-            L&apos;univers de <span style={{ color: 'var(--blue)' }}>Simba Draken</span>
+            L&apos;image de <span style={{ color: 'var(--blue)' }}>nos artistes</span>
           </h2>
-          <p style={{ maxWidth: 480, fontSize: 'clamp(.92rem, 1.7vw, 1.05rem)' }}>
-            Portraits, sessions studio, backstage. La vie de l&apos;artiste en images.
+          <p style={{ maxWidth: 520, fontSize: 'clamp(.92rem, 1.7vw, 1.05rem)' }}>
+            Portraits officiels, sessions studio, scène et backstage — l&apos;univers visuel de Simba Draken et des artistes de Win Concept Industry.
           </p>
         </div>
 
